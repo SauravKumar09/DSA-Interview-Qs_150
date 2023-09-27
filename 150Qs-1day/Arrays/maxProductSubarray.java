@@ -1,0 +1,37 @@
+package Arrays;
+
+public class maxProductSubarray
+{
+	public static void main(String[] args) {
+	    int[] nums = {2, 3, -2, 4};
+	   // int[] nums = {-2, 0, -1};
+        System.out.println(maxProduct(nums));
+        
+        
+	}
+	public static int maxProduct(int[] nums){
+	    int n = nums.length;
+	    int pf1 = 1;
+	    int max1 = Integer.MIN_VALUE;
+	    int pf2 = 1;
+	    int max2 = Integer.MIN_VALUE;
+	    
+	    for(int i=0; i<n; i++){
+	        if(pf1 == 0){
+	            pf1 = nums[i];
+	        }else{
+	            pf1 = pf1 * nums[i];
+	        }
+	        max1 = Math.max(max1, pf1);
+	    }
+	    for(int i = n-1; i>=0; i--){
+	        if(pf2 == 0){
+	            pf2 = nums[i];
+	        }else{
+	            pf2 = pf2 * nums[i];
+	        }
+	        max2 = Math.max(max2, pf2);
+	    }
+	    return Math.max(max1, max2);
+	}
+}
